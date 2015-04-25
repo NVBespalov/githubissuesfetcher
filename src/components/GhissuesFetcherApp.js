@@ -1,20 +1,19 @@
 'use strict';
 
 var React = require('react/addons');
-var ReactTransitionGroup = React.addons.TransitionGroup;
 
 // CSS
 require('normalize.css');
 require('../styles/main.css');
-
+var Issues = require('./Issues');
 var GhissuesFetcherApp = React.createClass({
   render: function() {
     return (
-      <div className='main'>
-        <ReactTransitionGroup transitionName="fade">
-
-        </ReactTransitionGroup>
-      </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <Issues />
+            </div>
+        </div>
     );
   }
 });
