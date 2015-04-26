@@ -6,6 +6,12 @@ require('styles/Issues.less');
 var IssuesList = require('./IssuesList');
 var Issues = React.createClass({
 
+    getInitialState: function() {
+        return {
+            allIssues: IssuesStore.getAll()
+        };
+    },
+
     componentDidMount: function() {
         IssuesStore.addChangeListener(this._onChange);
     },
@@ -15,22 +21,35 @@ var Issues = React.createClass({
     },
 
     render: function () {
+        debugger
+
+
         return (
+
             <div className="row">
-                <div className="col-lg-12">
-                    <form className="form-inline" onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <label>Имя пользователя</label>
-                            <input type="text" className="form-control" placeholder="NVBespalov" ref="userNameInput" value="jaredly"/>
+                <div className="panel panel-default">
+                    <div className="panel-heading">
+                        Поиск запросов
+                    </div>
+                    <div className="panel-body">
+                        <div className="col-lg-12">
+                            <form className="form-inline" onSubmit={this.onSubmit}>
+                                <div className="form-group">
+                                    <label>Имя пользователя</label>
+                                    <input type="text" className="form-control" placeholder="NVBespalov" ref="userNameInput" value="jaredly"/>
+                                </div>
+                                <div className="form-group">
+                                    <label>Имя репозитория</label>
+                                    <input type="text" className="form-control" placeholder="Имя репозитория" ref="repositoryNameInput" value="github-issues-viewer"/>
+                                </div>
+                                <button type="submit" className="btn btn-default">Поиск</button>
+                            </form>
                         </div>
-                        <div className="form-group">
-                            <label>Имя репозитория</label>
-                            <input type="text" className="form-control" placeholder="Имя репозитория" ref="repositoryName" value="github-issues-viewer"/>
-                        </div>
-                        <button type="submit" className="btn btn-default" >Поиск</button>
-                    </form>
+                    </div>
                 </div>
-                <IssuesList />
+                <IssuesList issues={this.state.allIssues}
+                            userName={this.refs.userNameInput.getDOMNode().value}
+                            repositoryName={this.refs.repositoryNameInput.getDOMNode().value}/>
             </div>
 
         );
@@ -43,7 +62,7 @@ var Issues = React.createClass({
         IssuesActions.search(
             {
                 userName:this.refs.userNameInput.getDOMNode().value,
-                repositoryName:this.refs.repositoryName.getDOMNode().value
+                repositoryName:this.refs.repositoryNameInput.getDOMNode().value
             }
         );
     },
@@ -52,8 +71,7 @@ var Issues = React.createClass({
      * @private
      */
     _onChange: function() {
-        debugger
-        this.setState(IssuesStore.getAll());
+        this.setState(this.getInitialState());
     }
 });
 
