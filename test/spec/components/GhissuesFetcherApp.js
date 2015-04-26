@@ -9,7 +9,7 @@ describe('GhissuesFetcherApp', function () {
     container.id = 'content';
     document.body.appendChild(container);
 
-    GhissuesFetcherApp = require('components/GhissuesFetcherApp.js');
+    GhissuesFetcherApp = require('components/GhissuesFetcherApp');
     component = React.createElement(GhissuesFetcherApp);
   });
 

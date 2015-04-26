@@ -5,7 +5,7 @@ describe('Issues', function () {
   var Issues, component;
 
   beforeEach(function () {
-    Issues = require('components/Issues.js');
+    Issues = require('components/Issues');
     component = React.createElement(Issues);
   });
 
