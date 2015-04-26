@@ -45,6 +45,9 @@ function searchRemoteIssues(searchCriteria) {
                 }
             }
         };
+        req.onprogress = function () {
+            // progress bar handler here
+        };
         req.open('GET', 'https://api.github.com/repos/' + searchCriteria.userName + '/' + searchCriteria.repositoryName + '/issues', true);
         req.send();
     });
