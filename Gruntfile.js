@@ -116,7 +116,7 @@ module.exports = function (grunt) {
             'webpack-dev-server'
         ]);
     });
-    //@TODO implement karma coverage
+    //@TODO implement karma coverage https://github.com/karma-runner/karma-coverage
     //@TODO implement selenium functional testing
     //@TODO implement selenium markup testing yandex gemini
     grunt.registerTask('test', ['karma']);
