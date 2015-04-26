@@ -6,7 +6,7 @@ require('styles/IssuesList.less');
 
 var IssuesList = React.createClass({
     /**
-     * @TODO wrap each issue into separate component such as row and row item
+     * @TODO wrap each issue into separate component such as row component and row item component
      * @returns {XML}
      */
     render: function () {

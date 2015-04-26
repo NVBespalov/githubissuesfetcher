@@ -7,6 +7,15 @@ var Promise = require('es6-promise').Promise;
 var CHANGE_EVENT = 'change';
 var storage = require('./DataStorage');
 var IssuesStore;
+
+//var GHAPI = require('github-api');
+//var github = new GHAPI({
+//    username: 'user name',
+//    password: 'password',
+//    auth: 'basic'
+//});
+
+
 /**
  * Create XMLHttpRequest entity for a further usage
  * @returns {XMLHttpRequest}
@@ -30,7 +39,10 @@ function getXmlHttp() {
  */
 function searchRemoteIssues(searchCriteria) {
     var req = getXmlHttp();
-
+    //var issues = github.getIssues(searchCriteria.userName, searchCriteria.repositoryName);
+    //issues.list({}, function(err, issues) {
+    //    // handler for github issues request
+    //});
     return new Promise(function (resolve, reject) {
         req.onreadystatechange = function () {
             if (req.readyState === XMLHttpRequest.DONE) {

@@ -35,7 +35,7 @@ var Issues = React.createClass({
                             <form className="form-inline">
                                 <div className="form-group">
                                     <label>Имя пользователя</label>
-                                    <input type="text" className="form-control" placeholder="NVBespalov" ref="userNameInput" value="jaredly"/>
+                                    <input type="text" className="form-control" placeholder="Имя пользователя" ref="userNameInput" value="jaredly"/>
                                 </div>
                                 <div className="form-group">
                                     <label>Имя репозитория</label>
