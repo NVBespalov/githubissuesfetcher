@@ -6,7 +6,7 @@ var assign = require('object-assign');
 var Promise = require('es6-promise').Promise;
 var CHANGE_EVENT = 'change';
 var storage = require('./DataStorage');
-
+var IssuesStore;
 /**
  * Create XMLHttpRequest entity for a further usage
  * @returns {XMLHttpRequest}
@@ -33,15 +33,15 @@ function searchRemoteIssues(searchCriteria) {
 
     return new Promise(function (resolve, reject) {
         req.onreadystatechange = function () {
-            if (req.readyState == XMLHttpRequest.DONE) {
-                if (req.status == 200) {
+            if (req.readyState === XMLHttpRequest.DONE) {
+                if (req.status === 200) {
                     resolve(JSON.parse(req.responseText));
                 }
-                else if (req.status == 400) {
-                    reject()
+                else if (req.status === 400) {
+                    reject();
                 }
                 else {
-                    reject()
+                    reject();
                 }
             }
         };
@@ -59,7 +59,7 @@ function searchIssuesActionHandler(searchCriteria) {
         IssuesStore.emitChange();
     });
 }
-var IssuesStore = assign({}, EventEmitter.prototype, {
+IssuesStore = assign({}, EventEmitter.prototype, {
 
     /**
      * Get the entire collection of TODOs.

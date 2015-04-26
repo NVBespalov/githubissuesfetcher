@@ -1,4 +1,4 @@
-
+'use strict';
 var React = require('react/addons');
 var IssuesActions = require('../actions/IssuesActionCreators');
 var IssuesStore = require('../stores/IssuesStore');
@@ -21,7 +21,6 @@ var Issues = React.createClass({
     },
 
     render: function () {
-        debugger
         if(this.state.allIssues) {}
 
         return (
@@ -65,6 +64,7 @@ var Issues = React.createClass({
             }
         );
         event.preventDefault();
+
     },
     /**
      * On store changed handler

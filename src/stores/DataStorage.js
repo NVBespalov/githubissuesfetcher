@@ -1,7 +1,7 @@
 /**
  * Created by nickbespalov on 26.04.15.
  */
-
+'use strict';
 var _store = {};
 
 var DataStorage = {
