@@ -5,8 +5,8 @@ describe('React store data storage helper', function () {
     var fixtures;
 
     beforeEach(function () {
-        fixtures = require('issuesFixtures');
-        sut = require('../../stores/DataStorage');
+        fixtures = require('./issuesFixtures');
+        sut = require('stores/DataStorage');
         sut.clear()
     });
     it('should be defined', function () {
@@ -16,6 +16,7 @@ describe('React store data storage helper', function () {
         expect(typeof sut.getAll()).toEqual('object');
     });
     it('should create one item from raw data', function() {
+        sut.createOne(fixtures[0]);
         expect(typeof sut.getAll()).toEqual('object');
     });
     it('should return item object on prompt', function() {
@@ -28,7 +29,7 @@ describe('React store data storage helper', function () {
     });
     it('should destroy item', function() {
         sut.createOne(fixtures[0]);
-        sut.destroy(fixtures[0]);
-        expect(typeof sut.getByID(fixtures[0].id)).toBeUndefined();
+        sut.destroy(fixtures[0].id);
+        expect(sut.getByID(fixtures[0].id)).toBeUndefined();
     });
 });

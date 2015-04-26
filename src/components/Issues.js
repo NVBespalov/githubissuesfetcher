@@ -1,7 +1,7 @@
 
 var React = require('react/addons');
-var IssuesActions = require('actions/IssuesActionCreators');
-var IssuesStore = require('stores/IssuesStore');
+var IssuesActions = require('../actions/IssuesActionCreators');
+var IssuesStore = require('../stores/IssuesStore');
 require('styles/Issues.less');
 var IssuesList = require('./IssuesList');
 var Issues = React.createClass({
