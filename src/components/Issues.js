@@ -22,7 +22,7 @@ var Issues = React.createClass({
 
     render: function () {
         debugger
-
+        if(this.state.allIssues) {}
 
         return (
 
@@ -33,7 +33,7 @@ var Issues = React.createClass({
                     </div>
                     <div className="panel-body">
                         <div className="col-lg-12">
-                            <form className="form-inline" onSubmit={this.onSubmit}>
+                            <form className="form-inline">
                                 <div className="form-group">
                                     <label>Имя пользователя</label>
                                     <input type="text" className="form-control" placeholder="NVBespalov" ref="userNameInput" value="jaredly"/>
@@ -42,14 +42,13 @@ var Issues = React.createClass({
                                     <label>Имя репозитория</label>
                                     <input type="text" className="form-control" placeholder="Имя репозитория" ref="repositoryNameInput" value="github-issues-viewer"/>
                                 </div>
-                                <button type="submit" className="btn btn-default">Поиск</button>
+                                <button to="/" className="btn btn-default" onClick={this.onSubmit}>Поиск</button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <IssuesList issues={this.state.allIssues}
-                            userName={this.refs.userNameInput.getDOMNode().value}
-                            repositoryName={this.refs.repositoryNameInput.getDOMNode().value}/>
+
+                <IssuesList issues={this.state.allIssues} />
             </div>
 
         );
@@ -65,6 +64,7 @@ var Issues = React.createClass({
                 repositoryName:this.refs.repositoryNameInput.getDOMNode().value
             }
         );
+        event.preventDefault();
     },
     /**
      * On store changed handler

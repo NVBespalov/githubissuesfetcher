@@ -25,7 +25,7 @@ var IssuesList = React.createClass({
                                                                      href="#thumbnail-label"><span
                                 className="anchorjs-icon"></span></a></h3>
                             <p>{issue.body}</p>
-                            <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#" className="btn btn-default" role="button">Button</a></p>
+                            <p><a href="/" className="btn btn-primary" role="button">Button</a> <a href="/" className="btn btn-default" role="button">Button</a></p>
 
                         </div>
 
@@ -37,7 +37,7 @@ var IssuesList = React.createClass({
         return (
 
             <div className="panel panel-default">
-                <div className="panel-heading"> Запросы от:{this.props.userName} в репозитории:{this.props.repositoryName} </div>
+                <div className="panel-heading"></div>
                 <div className="panel-body">
                     {issues}
                 </div>
