@@ -22,8 +22,9 @@
     "newcap": false,
     "globals": {
         "React": true,
-        "Promise": true
-    },
-    "predef": ["ActiveXObject"]
+        "Promise": true,
+        "Link": true,
+        "ActiveXObject": true
+    }
 }
 
