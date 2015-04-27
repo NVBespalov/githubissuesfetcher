@@ -8,7 +8,7 @@ var IssuesDetails = React.createClass({
     render: function () {
         return (
             <div>
-                <p>Content for IssuesDetails</p>
+                <p>{this.context.router.getCurrentParams().messageId}</p>
             </div>
         );
     }
