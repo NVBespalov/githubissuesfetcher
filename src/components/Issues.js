@@ -35,11 +35,11 @@ var Issues = React.createClass({
                             <form className="form-inline">
                                 <div className="form-group">
                                     <label>Имя пользователя</label>
-                                    <input type="text" className="form-control" placeholder="Имя пользователя" ref="userNameInput" value="jaredly"/>
+                                    <input type="text" className="form-control" placeholder="Имя пользователя" ref="userNameInput" />
                                 </div>
                                 <div className="form-group">
                                     <label>Имя репозитория</label>
-                                    <input type="text" className="form-control" placeholder="Имя репозитория" ref="repositoryNameInput" value="github-issues-viewer"/>
+                                    <input type="text" className="form-control" placeholder="Имя репозитория" ref="repositoryNameInput" />
                                 </div>
                                 <button to="/" className="btn btn-default" onClick={this.onSubmit}>Поиск</button>
                             </form>
