@@ -8,27 +8,13 @@ var CHANGE_EVENT = 'change';
 var storage = require('./DataStorage');
 var IssuesStore;
 
-//var GHAPI = require('github-api');
-//var github = new GHAPI({
-//    username: 'user name',
-//    password: 'password',
-//    auth: 'basic'
-//});
-
-
-/**
- * Create XMLHttpRequest entity for a further usage
- * @returns {XMLHttpRequest}
- */
-function getXmlHttp() {
-    var xmlhttp;
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    } else {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    return xmlhttp;
-}
+// @TODO Should be in singleton
+var GHAPI = require('github-api');
+var github = new GHAPI({
+    username: 'USER_NAME',
+    password: 'PASSWORD',
+    auth: 'basic'
+});
 
 /**
  * search for remote issues via GH API
@@ -38,30 +24,18 @@ function getXmlHttp() {
  * @TODO refactor extract to SINGLETON service :-)
  */
 function searchRemoteIssues(searchCriteria) {
-    var req = getXmlHttp();
-    //var issues = github.getIssues(searchCriteria.userName, searchCriteria.repositoryName);
-    //issues.list({}, function(err, issues) {
-    //    // handler for github issues request
-    //});
+    var issues = github.getIssues(searchCriteria.userName, searchCriteria.repositoryName);
+
     return new Promise(function (resolve, reject) {
-        req.onreadystatechange = function () {
-            if (req.readyState === XMLHttpRequest.DONE) {
-                if (req.status === 200) {
-                    resolve(JSON.parse(req.responseText));
-                }
-                else if (req.status === 400) {
-                    reject();
-                }
-                else {
-                    reject();
-                }
+        issues.list({}, function(err, issues) {
+            if (err) {
+                reject();
+            } else if (issues && issues.length) {
+                resolve(issues);
+            } else {
+                reject();
             }
-        };
-        req.onprogress = function () {
-            // progress bar handler here
-        };
-        req.open('GET', 'https://api.github.com/repos/' + searchCriteria.userName + '/' + searchCriteria.repositoryName + '/issues', true);
-        req.send();
+        });
     });
 
 }
